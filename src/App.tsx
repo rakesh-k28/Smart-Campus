@@ -21,6 +21,11 @@ import ResourceAllocationBookingPage from './pages/modules/ResourceAllocationBoo
 import TechnicianExecutionPage from './pages/modules/TechnicianExecutionPage'
 import UserAccessPage from './pages/modules/UserAccessPage'
 import VendorDashboardPage from './pages/modules/VendorDashboardPage'
+import RaiseComplaintPage from './pages/complaints/RaiseComplaintPage'
+import ComplaintListPage from './pages/complaints/ComplaintListPage'
+import ComplaintTrackingPage from './pages/complaints/ComplaintTrackingPage'
+import FeedbackPage from './pages/complaints/FeedbackPage'
+import ProfilePage from './pages/profile/ProfilePage'
 import {
   ActivityLogsPage,
   AnalyticsPage as UserAccessAnalyticsPage,
@@ -55,7 +60,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            
+
             {/* User Access Module with nested routes */}
             <Route
               path="user-access"
@@ -83,10 +88,10 @@ function App() {
               <Route path="notifications" element={<NotificationCenterPage />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>
-            
+
             {/* Redirect old user-access route to new structure */}
             <Route path="modules/user-access" element={<Navigate to="/user-access/dashboard" replace />} />
-            
+
             {/* Other module routes */}
             <Route path="modules/complaint-intake" element={<ComplaintIntakePage />} />
             <Route
@@ -141,7 +146,14 @@ function App() {
               path="modules/resource-allocation-booking"
               element={<ResourceAllocationBookingPage />}
             />
-            
+
+            {/* Complaint & Profile standalone pages */}
+            <Route path="complaints" element={<ComplaintListPage />} />
+            <Route path="complaints/raise" element={<RaiseComplaintPage />} />
+            <Route path="complaints/track" element={<ComplaintTrackingPage />} />
+            <Route path="complaints/feedback" element={<FeedbackPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+
             {/* Catch all */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
